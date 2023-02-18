@@ -165,7 +165,7 @@ func ExtractTokenMetaData(c *fiber.Ctx) (*models.AccessDetails, error) {
 
 func DeleteAuth(tokenUUID uuid.UUID) (int64, error) {
 	client := RedisInit()
-	deleted, err := client.Del(context.Background(), tokenUUID).Result()
+	deleted, err := client.Del(context.Background(), tokenUUID.String()).Result()
 
 	return deleted, err
 }
